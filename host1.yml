@@ -1,0 +1,39 @@
+---
+- name: Set hostname centos vm 1
+  hosts: 192.168.11.163
+  gather_facts: false
+  tasks:
+    - name: centos vm 1
+      hostname:
+        name: centos-vm1.example.com
+- name: Set hostname centos vm 2
+  hosts: 192.168.11.165
+  gather_facts: false
+  tasks:
+    - name: centos vm 2
+      hostname:
+        name: centos-vm2.example.com
+- name: Set hostname ubuntu vm 1
+  hosts: 192.168.11.166
+  gather_facts: false
+  tasks:
+    - name: ubuntu-vm1
+      hostname:
+        name: ubuntu-vm1.example.com
+      notify: remove_hosts
+  handlers:
+    - name: remove_hosts
+      file:
+        path: /etc/vhosts
+        state: absent
+- name: Manage Hosts Files
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Deploy Hots Template
+      template:
+        src: hosts.j2
+        dest: /etc/vhosts
+
+...
+

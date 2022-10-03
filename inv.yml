@@ -1,0 +1,24 @@
+---
+all:
+  children:
+    uk:
+      children:
+        london:
+          hosts:
+            www1.example.com:
+            db1.example.com:
+            192.168.55.1:
+        manchester:
+          hosts:
+            www2.example.com:
+            db2.example.com:
+          vars:
+            ntp_server: nw-tock.example.com
+    database:
+      hosts:
+        db1.example.com:
+        db2.example.com:
+    WWW:
+      hosts:
+        www1.example.com:
+        www2.example.com:

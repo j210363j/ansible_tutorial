@@ -1,0 +1,9 @@
+---
+- name: Add keys to hosts
+  hosts: all
+  tasks:
+  - name: Install Key
+    authorized_key:
+      user: ansible
+      state: present
+      key:  "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
