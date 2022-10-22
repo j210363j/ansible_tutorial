@@ -3,6 +3,18 @@
   become: true
   tasks:
 
+    - name: update repository index
+      apt:
+        upgrade: dist_
+        update_cache: yes
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+      
+    - name: update repository index - Centos
+      dnf:
+        update_only: yes
+        update_cache: yes
+      when: ansible_distribution in ["CentOS"]
+
     - name: Adding simone user to all
       user:
         name: simone

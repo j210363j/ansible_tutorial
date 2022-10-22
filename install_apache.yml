@@ -7,6 +7,7 @@
   - name: update repository index
     apt:
       update_cache: yes
+    changed_when: false
     when: ansible_distribution in ["Debian", "Ubuntu"]
 
   - name: install apache packet and php packet
@@ -26,6 +27,7 @@
   - name: update repository index - Centos
     dnf:
       update_cache: yes
+    changed_when: false
     when: ansible_distribution in ["CentOS"]
 
   - name: install apache packet - CentOS
