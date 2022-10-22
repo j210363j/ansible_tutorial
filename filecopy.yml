@@ -1,0 +1,12 @@
+---
+- hosts: centos
+  become: true
+  tasks:
+    - name: copy default html files to remove server
+      copy:
+        src:  default_site.html
+        dest: /home/jpatel2/jay.html
+        owner: root
+        group: root
+        mode: 0644
+

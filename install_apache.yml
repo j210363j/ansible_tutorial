@@ -40,6 +40,7 @@
     service:
       name: httpd 
       state: started
+      enabled: yes
     when: ansible_distribution in ["CentOS"]
 
   - name: Create firewall rules for apache server  CentOS
