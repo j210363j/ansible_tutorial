@@ -1,0 +1,8 @@
+# this should only have task created
+#
+#
+
+- name: add ssh key for simone
+  authorized_key:
+    user: simone
+     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDGtqsz3vfLwQXvFWRTfLV/Zh+S4dRrccjm5Nl2QEv5/4UeBE4L6sQwWgHkpzFtlRmCtZPkpNK2h8ZrrKWF/31th2O7YmvZe3j2fn3qiLvEXXjGn3Wsdvia7nlKSo76WtPXy1QtQqPwOBU6GLJpZ/stKScr+SY5VbRibFXlit7oeWBDkz7YY8yXr4zQR4dgOxcb4Y1lZDnjgvCcXDbwadAIiw6QRGqzAa77movECEifiPZbySr3cgar5I99ykjD1/CuxKPo9d4vdeyPVxJnYY2nunSzGybi0HF9gnLiRFd3nsAocBmqPaD3PsGGAcPFRdRz0VisrY+0c+zo8PEIGw4uHSEMsa1QNHzIYeaIfapqFb22ea50jHtaFDsxfRoERZnFc1pFQ9Lxz+0vFet0CqHZ4bpGJXHa6SuXBFbUYudjdJ+czheMUKnONLpEj43Mio60ifb9njoQwe5K0QwTdHEbs0biIoxhxobVX2w3UwATNha3YwGK/vtJ2GhumtOFjaU= ansible@localhost.localdomain"
