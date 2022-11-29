@@ -8,12 +8,14 @@ all:
     ubuntu:
       vars:
         apache_package: apache2
+        admin_group: sudo
       hosts:
         192.168.11.166: {}
 
     centos:
       vars:
         apache_package: httpd
+        admin_group: wheel
       hosts:
         192.168.11.165: {}
         192.168.11.163: {}
