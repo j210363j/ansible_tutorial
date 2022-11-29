@@ -1,0 +1,20 @@
+---
+all:
+  children:
+    server2:
+      hosts:
+        192.168.11.163: {}
+
+    ubuntu:
+      vars:
+        apache_package: apache2
+      hosts:
+        192.168.11.166: {}
+
+    centos:
+      vars:
+        apache_package: httpd
+      hosts:
+        192.168.11.165: {}
+        192.168.11.163: {}
+
