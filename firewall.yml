@@ -1,0 +1,13 @@
+---
+- name: Manage Firewall
+  hosts: centos 
+  vars:
+    firewall_services:
+      - http
+      - https
+  roles:
+    - name: firewall-r
+      firewall_services:
+        - http
+        - https
+      service_state: enabled

@@ -1,0 +1,18 @@
+---
+- name: Clean User Accounts
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks: 
+
+    - name: Delete user
+      user:
+        name: "{{ item }}"
+        state: absent
+        remove: true
+      loop:
+        - bob
+        - wendy
+        - lofty
+        - dizzy
+...
