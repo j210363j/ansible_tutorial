@@ -1,0 +1,26 @@
+---
+- name: add host playbook
+  hosts: gw 
+  connection: httpapi
+  # Add or delete host object in Check Point management server
+  tasks:
+    - name: "change hostname"
+      check_point.gaia.cp_gaia_hostname:
+        name: fwd1 
+
+  
+#    - name: Create host object
+#      cp_mgmt_host:
+#        color:  dark green
+#        ipv4_address: 12.12.12.12
+#        name: New CP_mgmt host2
+#        state: present
+#        auto_publish_session: true
+#
+#    - name: add-host or delete-host
+#      check_point.mgmt.cp_mgmt_network: 
+#        color: red
+#        name: "my_net"
+#        subnet: 192.168.79.0
+#        subnet_mask: 255.255.255.0
+#        auto_publish_session: true

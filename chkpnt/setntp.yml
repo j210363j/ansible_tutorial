@@ -1,0 +1,39 @@
+---
+- name: add host playbook
+  hosts: gw 
+  connection: httpapi
+  gather_facts: false
+# Add or delete host object in Check Point management server
+  tasks:
+    - name: "Setting ntp server for the system"
+      check_point.gaia.cp_gaia_ntp_facts:
+#        enabled: False
+#        servers: [{"version": 2, "type": primary, "address": 8.8.8.8}]
+    - name: Show current hostname
+      check_point.gaia.cp_gaia_hostname_facts:
+ 
+    - name: Show banner message
+      check_point.gaia.cp_gaia_banner_facts:
+
+#    - name: Changing the banner message
+#      check_point.gaia.cp_gaia_banner:
+#        msg: new_message
+
+    - name: Show new banner message
+      check_point.gaia.cp_gaia_banner_facts:
+
+#    - name: Create host object
+#      cp_mgmt_host:
+#        color:  dark green
+#        ipv4_address: 12.12.12.12
+#        name: New CP_mgmt host2
+#        state: present
+#        auto_publish_session: true
+#
+#    - name: add-host or delete-host
+#      check_point.mgmt.cp_mgmt_network: 
+#        color: red
+#        name: "my_net"
+#        subnet: 192.168.79.0
+#        subnet_mask: 255.255.255.0
+#        auto_publish_session: true

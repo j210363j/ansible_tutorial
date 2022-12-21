@@ -1,0 +1,16 @@
+---
+- name: "change shell"
+  hosts: gw
+  connection: local
+  gather_facts: no
+  tasks:
+
+    - name: "Set shell to bash"
+      raw: lock database override
+
+    - name: "Set shell to bash"
+      raw: set user admin shell /bin/bash
+
+    - name: "save configuration"
+      raw: save config
+      

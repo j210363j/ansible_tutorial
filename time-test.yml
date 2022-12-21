@@ -1,0 +1,20 @@
+---
+- name: time-output
+  hosts: 127.0.0.1
+  gather_facts: false
+  connection: local
+
+
+  tasks:
+    - name: Register the ouput of the uptime command
+      command:  uptime
+      register: system_uptime
+
+    - name: Print the registered output of time
+      debug:
+        var:  system_uptime.stdout
+
+    - name: Print a message if a command resulted in a change.
+      debug:
+        msg:  "Command resulted in a change !"
+      when: system_uptime is changed

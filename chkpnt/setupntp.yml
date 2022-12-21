@@ -1,0 +1,14 @@
+---
+- name: add host playbook
+  hosts: mgmt 
+  connection: httpapi
+  gather_facts: true 
+  # Add or delete host object in Check Point management server
+  tasks:
+    - name: Show current NTP configuration
+      check_point.gaia.cp_gaia_ntp_facts:
+
+#    - name: Setting ntp servers for the system
+#      check_point.gaia.cp_gaia_ntp:
+#        enabled: true 
+#        servers: [{ "type": "primary", "address": "4.4.4.4", "version": 2 }]

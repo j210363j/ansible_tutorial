@@ -1,0 +1,32 @@
+[check_point]
+# Check Point Security Management server's IP address
+192.168.11.201
+
+[check_point:vars]
+# If the Gaia web portal on your Security Management server is not setup with proper CA certificates that can be verified from the Ansible server, then it is necessary to disable validation of these certificates by using the ansible_httpapi_validate_certs. To do this you need to set ansible_httpapi_validate_certs=False in your inventory.
+
+ansible_httpapi_validate_certs=False
+ansible_httpapi_use_ssl=True
+ansible_network_os=check_point.mgmt.checkpoint
+ansible_user=admin
+ansible_password=P@ssw0rd
+
+[gw]
+192.168.11.101
+
+[gw:vars]
+ansible_httpapi_validate_certs=False
+ansible_httpapi_use_ssl=True
+ansible_network_os=check_point.gaia.checkpoint
+ansible_user=admin
+ansible_password=P@ssw0rd
+
+[mgmt]
+192.168.11.201 ansible_python_interpreter="/opt/CPsuite-R81.20/fw1/Python/bin/python"
+
+[mgmt:vars]
+ansible_connection=ssh
+ansible_ssh_user=admin
+ansible_ssh_password=P@ssw0rd
+ansible_python_interpreter='/opt/CPsuite-R81.20/fw1/Python/bin/python'
+

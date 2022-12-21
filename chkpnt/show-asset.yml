@@ -1,0 +1,56 @@
+---
+- name: add host playbook
+  hosts: gw 
+  connection: httpapi
+  gather_facts: false 
+  # Add or delete host object in Check Point management server
+  tasks:
+    - name: Create banner task-1
+      check_point.gaia.cp_gaia_banner_facts:
+
+    - name: Show api versions task-2
+      check_point.gaia.cp_gaia_api_versions_facts:
+#      register: inf2
+
+    - name: Show physical interfaces task-3
+      check_point.gaia.cp_gaia_physical_interfaces_facts:
+        name: eth1
+      register: inf1
+
+    - name: Show physical interface by specifying it name task-4
+      check_point.gaia.cp_gaia_physical_interfaces_facts:
+#       name: eth0
+      register: inf2
+
+    - name: Set comment field of a physical interface eth1 task-5
+      check_point.gaia.cp_gaia_physical_interface:
+        comments: eth1 interface
+        enabled: true
+        name: eth1
+
+    - name: Show physical interfaces eth1 task-6
+      check_point.gaia.cp_gaia_physical_interfaces_facts:
+        name: eth1
+
+    - name: Print the value of the env vaiable task-7
+      debug:
+        msg: " output from physical interface details {{ inf2 }}"
+
+    - name: Print the value of the env vaiable task-8
+      debug:
+        msg: " {{ inf1.ansible_facts.ipv4_address }} "
+
+    - name: Print the value of the env vaiable task-9
+      debug:
+        msg: " {{ inf2.ansible_facts.objects[0].ipv4_address }} "
+
+    - name: Set new static route
+      check_point.gaia.cp_gaia_static_route:
+        state: present
+        address: "1.2.125.0"
+        mask_length: 24
+        type: gateway
+        next_hop: [{"gateway": "192.168.11.2", "priority": 1 }]
+
+    - name: Show active static routes
+      check_point.gaia.cp_gaia_static_route_facts:
